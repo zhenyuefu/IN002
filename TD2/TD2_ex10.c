@@ -14,6 +14,18 @@ float valeur_absolue(float x) {
   if (x >= 0) {
     return x;
   }
+  return -x;
 }
 
-int main() {}
+int egal_eps(float x1, float x2, float epsilon) {
+  if (valeur_absolue(x1 - x2) < epsilon) {
+    return 1;
+  }
+  return 0;
+}
+
+int main() {
+  assert(egal_eps(surface_float(1.1, 1.1), 1.21, 0.0001) == 1);
+  assert(egal_eps(surface_float(1.1, 1.1), 1.22, 0.0001) == 0);
+  return 0;
+}
