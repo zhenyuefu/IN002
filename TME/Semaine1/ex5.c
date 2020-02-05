@@ -10,7 +10,7 @@ void afficheRacines(int a, int b, int c) {
   int delta = descriminant(a, b, c);
   if (delta < 0)
     printf("No racines found");
-  else if (delta = 0)
+  else if (delta == 0)
     printf("found 1 racine:%f", (-b + sqrt(delta)) / 2 * a);
   else
     printf("found 2 racines:%f,and %f", (-b + sqrt(delta)) / 2 * a,
