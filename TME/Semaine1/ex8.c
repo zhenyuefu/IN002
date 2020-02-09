@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 float prixEntree(int nA, int nE) {
   int F = 0;
   if (nA % 2 == 0 && nA >= 0 && nE >= 0) {
@@ -13,4 +14,7 @@ float prixEntree(int nA, int nE) {
   return (nA - 2) * 22.7 + (nE - nE % 3) * 10.75 + 57.8;
 }
 
-int main(void) { printf("%f", prixEntree(2, 3)); }
+int main() {
+  printf("%f", prixEntree(2, 3));
+  return 0;
+}
