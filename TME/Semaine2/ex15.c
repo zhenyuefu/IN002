@@ -1,5 +1,5 @@
 #include <cini.h>
-#define weight 500
+#define weight 800
 #define high 500
 
 void drawTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
