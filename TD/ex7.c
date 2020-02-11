@@ -32,7 +32,7 @@ void listeNombresPremiers(int n_max) {
   }
 }
 
-int main() {
+int main(void) {
   printf("liste de nombres premiers <= %d\n", MAX);
   listeNombresPremiers(MAX);
   return 0;

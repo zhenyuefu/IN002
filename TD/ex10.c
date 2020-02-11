@@ -24,7 +24,7 @@ int egal_eps(float x1, float x2, float epsilon) {
   return 0;
 }
 
-int main() {
+int main(void) {
   assert(egal_eps(surface_float(1.1, 1.1), 1.21, 0.0001) == 1);
   assert(egal_eps(surface_float(1.1, 1.1), 1.22, 0.0001) == 0);
   return 0;

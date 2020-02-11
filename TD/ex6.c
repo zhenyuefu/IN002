@@ -18,7 +18,7 @@ int somme_carres_for(int m, int n) {
   return s;
 }
 
-int main() {
+int main(void) {
   assert(somme_carres(1, 5) == 55);
   return 0;
 }
