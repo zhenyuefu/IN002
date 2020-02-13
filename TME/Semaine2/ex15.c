@@ -1,4 +1,6 @@
 #include <cini.h>
+#include <stdio.h>
+
 #define width 800
 #define height 500
 
@@ -18,19 +20,23 @@ void triangles(int w, int h) {
   x3 = w;
   y3 = h;
   drawTriangle(x1, y1, x2, y2, x3, y3);
-  x1temp = (x2 + 9 * x1) / 10;
-  y1temp = (y2 + 9 * y1) / 10;
-  x2temp = (x3 + 9 * x2) / 10;
-  y2temp = (y3 + 9 * y2) / 10;
-  x3temp = (x1 + 9 * x3) / 10;
-  y3temp = (y1 + 9 * y3) / 10;
-  x1 = x1temp;
-  x2 = x2temp;
-  x3 = x3temp;
-  y1 = y1temp;
-  y2 = y2temp;
-  y3 = y3temp;
-  drawTriangle(x1, y1, x2, y2, x3, y3);
+  while (1) {
+    x1temp = (x2 + 9 * x1) / 10;
+    y1temp = (y2 + 9 * y1) / 10;
+    x2temp = (x3 + 9 * x2) / 10;
+    y2temp = (y3 + 9 * y2) / 10;
+    x3temp = (x1 + 9 * x3) / 10;
+    y3temp = (y1 + 9 * y3) / 10;
+    x1 = x1temp;
+    x2 = x2temp;
+    x3 = x3temp;
+    y1 = y1temp;
+    y2 = y2temp;
+    y3 = y3temp;
+    CINI_loop_until_keyup();
+    drawTriangle(x1, y1, x2, y2, x3, y3);
+    if (getchar() == 10) break;
+  }
 }
 
 int main(void) {
