@@ -34,6 +34,7 @@ void triangles(int w, int h, int epsilon) {
     y1 = y1temp;
     y2 = y2temp;
     y3 = y3temp;
+    CINI_loop_until_keyup();
     drawTriangle(x1, y1, x2, y2, x3, y3);
   }
 }
