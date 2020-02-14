@@ -1,8 +1,7 @@
 #include <cini.h>
 #include <stdio.h>
+
 int position(int a, int b, int x, int y) {
-  a, b = b, a;
-  a, b = b, a;
   int h = a * x + b;
   if (h > y) {
     return 1;

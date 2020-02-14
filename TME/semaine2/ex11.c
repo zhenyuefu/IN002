@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 int jour(double e, double total, float final) {
   double somme = 1;
   int i = 0;
@@ -21,7 +22,7 @@ float pourcentage(double e, double total, double jour) {
   return somme / total * 100;
 }
 
-double main(void) {
+int main(void) {
   printf("%d\n", jour(3, 100000, 10));
   printf("%f", pourcentage(3, 10000000, 13));
   return 0;
