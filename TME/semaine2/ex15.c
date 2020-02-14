@@ -10,7 +10,7 @@ void drawTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
   CINI_draw_line(x1, y1, x3, y3, "green");
 }
 
-void triangles(int w, int h) {
+void triangles(int w, int h, int epsilon) {
   int x1, y1, x2, y2, x3, y3;
   int x1temp, y1temp, x2temp, y2temp, x3temp, y3temp;
   x1 = w / 2;
@@ -19,8 +19,9 @@ void triangles(int w, int h) {
   y2 = h;
   x3 = w;
   y3 = h;
+  int i;
   drawTriangle(x1, y1, x2, y2, x3, y3);
-  while (1) {
+  while ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) >= epsilon * epsilon) {
     x1temp = (x2 + 9 * x1) / 10;
     y1temp = (y2 + 9 * y1) / 10;
     x2temp = (x3 + 9 * x2) / 10;
@@ -33,16 +34,14 @@ void triangles(int w, int h) {
     y1 = y1temp;
     y2 = y2temp;
     y3 = y3temp;
-    CINI_loop_until_keyup();
     drawTriangle(x1, y1, x2, y2, x3, y3);
-    if (getchar() == 10) break;
   }
 }
 
 int main(void) {
   CINI_open_window(width, height, "triangles");
   CINI_fill_window("white");
-  triangles(width, height);
+  triangles(width, height, 2);
   CINI_loop();
   return 0;
 }
