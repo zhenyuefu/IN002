@@ -28,14 +28,22 @@ int maximum(int val, int valMax) {
   return valMax;
 }
 
+void minimum_maximum(int val, int *val_min, int *val_max){
+  if (val < * val_min){
+    *val_min = val;
+  }
+  if (val > * val_max){
+    *val_max = val;
+  }
+}
+
 int main(void) {
   int i, val;
   int min = VMAX, max = VMIN;
   srand((unsigned)time(NULL));
   for (i = 0; i < NB_VALEURS; i++) {
     val = valeur_aleatoire(VMIN, VMAX);
-    min = minimum(val, min);
-    max = maximum(val, max);
+    minimun_maximun(val,&min,&max);
   }
   printf("MIN = %d, MAX = %d\n", min, max);
   return 0;
