@@ -43,7 +43,7 @@ int main(void) {
   srand((unsigned)time(NULL));
   for (i = 0; i < NB_VALEURS; i++) {
     val = valeur_aleatoire(VMIN, VMAX);
-    minimun_maximun(val,&min,&max);
+    minimum_maximum(val,&min,&max);
   }
   printf("MIN = %d, MAX = %d\n", min, max);
   return 0;
