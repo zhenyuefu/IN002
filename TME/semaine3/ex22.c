@@ -26,7 +26,7 @@ int lancer_aleatoire(int LAN) {
 }
 
 void score(int new1, int new2, int *score, int b, int tour, int *temp) {
-    printf("temp=%d\n", *temp);
+    printf("temp origin=%d\n", *temp);
     if (*temp == 1) {
         *score += new1;
         *temp -= 1;
@@ -39,10 +39,12 @@ void score(int new1, int new2, int *score, int b, int tour, int *temp) {
             *temp -= 1;
         }
     }
-    if (*temp >= 1) {
+    if (*temp >= 2) {
         *score += new1;
         *temp -= 1;
     }
+
+    printf("temp final=%d\n", *temp);
 
     *score += new1;
     if (new2 >= 0) {
@@ -96,6 +98,9 @@ void TOUR(int *somme, int *tour, int *s_or_n, int *temp) {
             score1 = lancer(NBQUILLES);
             *somme += score1;
             printf("Quilles renversees :%d\n", score1);
+        }
+        if(temp>0){
+            *somme += score1;
         }
         printf("Score apres tour supplementaire : %d\n", *somme);
     }
