@@ -11,9 +11,12 @@
 /* Les declarations actuelles permettent de compiler et d'executer le programme */
 
 int lancer(int LAN) {
-    int n;
-    printf("please type your lancer");
-    scanf("%d", &n);
+    int n = -1;
+    while (n > LAN || n < 0) {
+        printf("please type your lancer entre 0 and %d:__\b\b",LAN);
+        scanf("%d", &n);
+    }
+
     return n;
 }
 
@@ -22,15 +25,30 @@ int lancer_aleatoire(int LAN) {
     return rand() % LAN;
 }
 
-void score(int new1, int new2, int *score, int b, int tour, int temp) {
-    printf("temp=%d\n",temp);
-    if (temp == 1) {
+void score(int new1, int new2, int *score, int b, int tour, int *temp) {
+    printf("temp=%d\n", *temp);
+    if (*temp == 1) {
         *score += new1;
-    } else if (temp == 2) {
-        *score += new1 + new2;
+        *temp -= 1;
+    } else if (*temp >= 2) {
+        if (new2 >= 0) {
+            *score += new1 + new2;
+            *temp -= 2;
+        } else {
+            *score += new1;
+            *temp -= 1;
+        }
     }
+    if (*temp >= 1) {
+        *score += new1;
+        *temp -= 1;
+    }
+
     *score += new1;
-    *score += new2;
+    if (new2 >= 0) {
+        *score += new2;
+    }
+
     printf("Score apres tour %d: %d \n", tour, *score);
     if (b == 1) {
         printf("score incomplet : spare en cours\n");
@@ -39,16 +57,15 @@ void score(int new1, int new2, int *score, int b, int tour, int temp) {
     }
 }
 
-void TOUR(int *somme, int *tour,int *s_or_n) {
+void TOUR(int *somme, int *tour, int *s_or_n, int *temp) {
     int score1 = 0;
-    int score2 = 0;
-    int temp;
-    temp = *s_or_n;
+    int score2 = -1;
+    *temp += *s_or_n;
     // TOUR NORMAL
     printf("TOUR%d\n", *tour);
     score1 = lancer(NBQUILLES);
     printf("Quilles renversees :%d\n", score1);
-    if (score1 < 10) {
+    if (score1 < NBQUILLES) {
         score2 = lancer(NBQUILLES - score1);
         printf("Quilles renversees :%d\n", score2);
         if (score2 + score1 == NBQUILLES) {
@@ -67,8 +84,12 @@ void TOUR(int *somme, int *tour,int *s_or_n) {
         if (*s_or_n == 2) {
             score1 = lancer(NBQUILLES);
             *somme += score1;
+            if(score1<10){
+                score2 = lancer(NBQUILLES - score1);
+            }else{
+                score2 = lancer(NBQUILLES);
+            }
             printf("Quilles renversees :%d\n", score1);
-            score2 = lancer(NBQUILLES - score1);
             *somme += score2;
             printf("Quilles renversees :%d\n", score2);
         } else {
@@ -81,11 +102,10 @@ void TOUR(int *somme, int *tour,int *s_or_n) {
 }
 
 int jeu() {
-    int somme = 0;
+    int somme = 0, s_or_n = 0, temp = 0;
     int tour;
-    int s_or_n=0;
     for (tour = 1; tour <= NBTOURS; tour++) {
-        TOUR(&somme, &tour,&s_or_n);
+        TOUR(&somme, &tour, &s_or_n, &temp);
     }
     return 0;
 }
