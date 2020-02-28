@@ -5,7 +5,7 @@
 void init_temp(float temperature[31]) {
   srand(time(NULL));
   for (int i = 0; i < 31; i++) {
-    temperature[i] = (rand() % 500 - 200) / 10;
+    temperature[i] = (rand() % 500 - 200) / 10.0;
   }
 }
 

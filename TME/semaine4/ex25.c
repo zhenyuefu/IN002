@@ -18,7 +18,7 @@ void placeElt(float tab[], int i) {
 void initTable(float tab[]) {
   srand((unsigned)time(NULL));
   for (int i = 0; i < taille; i++) {
-    tab[i] = (rand() % maximum) / 10;
+    tab[i] = (rand() % maximum) / 10.0;
   }
 }
 
