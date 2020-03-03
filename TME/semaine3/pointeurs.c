@@ -11,4 +11,7 @@ void ma_fonction(int v1, int v2) {
   printf("a=%d, b=%d\n", *a, *b);
 }
 
-int main() { ma_fonction(10, 20); }
+int main(void) {
+  ma_fonction(10, 20);
+  return 0;
+}
