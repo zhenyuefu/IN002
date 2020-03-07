@@ -41,8 +41,8 @@ int main(void) {
 
   /* Definition de variables supplementaires si necessaire */
   int nbTrans;
-  int x = 0, y = 0;
-  int xpre, ypre;
+  float x = 0.0, y = 0.0;
+  float xpre, ypre;
   /* Calcul des bornes des intervalles */
   calcule_bornes_sup(tab_P);
   srand(time(NULL));
