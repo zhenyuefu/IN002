@@ -1,8 +1,8 @@
 #include <cini.h>
 #include <stdio.h>
 
-#define width 800
-#define height 500
+#define WIDTH 800
+#define HEIGHT 500
 
 void drawTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
   CINI_draw_line(x1, y1, x2, y2, "blue");
@@ -40,9 +40,9 @@ void triangles(int w, int h, int epsilon) {
 }
 
 int main(void) {
-  CINI_open_window(width, height, "triangles");
+  CINI_open_window(WIDTH, HEIGHT, "triangles");
   CINI_fill_window("white");
-  triangles(width, height, 2);
+  triangles(WIDTH, HEIGHT, 2);
   CINI_loop();
   return 0;
 }
