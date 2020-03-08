@@ -10,3 +10,7 @@
 # Ignore json
 .vscode
 .theia
+
+# Ignore exe dll
+*.exe
+*.dll
