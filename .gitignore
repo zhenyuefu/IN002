@@ -14,3 +14,6 @@
 # Ignore exe dll
 *.exe
 *.dll
+
+# Ignore TabNine configuration
+/TabNine
