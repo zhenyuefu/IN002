@@ -7,6 +7,7 @@ int iterative(int r, int tab[], int len) {
             return 1;
         }
     }
+    return 0;
 }
 
 int recursive(int r, int tab[], int len) {
