@@ -15,9 +15,7 @@ int recursive(int r, int tab[], int len) {
     } else if (len == 1) {
         return 0;
     } else {
-        tab++;
-        len--;
-        return recursive(r, tab, len);
+        return recursive(r, ++tab, --len);
     }
 }
 
