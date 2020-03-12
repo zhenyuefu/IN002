@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #define N 3
 void init(char plateau[N][N]) {
     int i;
@@ -49,14 +50,15 @@ void jouer(char plateau[N][N], int joueur) {
     afficher(plateau);
 }
 void jouerOrdinateur(char plateau[N][N]) {
-    int x = rand() % 3;
-    int y = rand() % 3;
-    while (x, y > N || x, y <= 0 || plateau[x][y] != '_') {
-        int x = rand() % 3;
-        int y = rand() % 3;
+    int x = rand() % N;
+    int y = rand() % N;
+    while (plateau[x][y] != '_') {
+        x = rand() % N;
+        y = rand() % N;
     }
     plateau[x][y] = 'O';
 }
+
 int partie_gagnee(char plateau[N][N]) {
     int i, j;
     char p = ' ';
@@ -77,10 +79,10 @@ int partie_gagnee(char plateau[N][N]) {
         }
     }
     //chaque colonnee
-    for (j = 0; j <= N; j++) {
+    for (j = 0; j < N; j++) {
         p = ' ';
         b = 1;
-        for (i = 0; i <= N; i++) {
+        for (i = 0; i < N; i++) {
             if (p == ' ') {
                 p = plateau[i][j];
             } else if (p != plateau[i][j] || p == '_') {
@@ -163,6 +165,7 @@ void jouer_a(char plateau[N][N], int nb_joueurs) {
 
 int main() {
     char plateau[N][N];
+    srand(time(NULL));
     init(plateau);
     jouer_a(plateau, 2);
     return 0;
