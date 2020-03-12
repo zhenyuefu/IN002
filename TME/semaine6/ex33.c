@@ -4,7 +4,7 @@ int est_deb(char *, char *);
 int est_incluse(char *, char *);
 
 int main(void) {
-  char *chaine1 = "beta", *chaine2 = "alphabeta";
+  char *chaine1 = "beta", *chaine2 = "alphabet";
   printf("%d\n", est_deb(chaine1, chaine2));
   if (est_incluse(chaine1, chaine2) == 1) {
     printf("%s est incluse dans %s", chaine1, chaine2);
