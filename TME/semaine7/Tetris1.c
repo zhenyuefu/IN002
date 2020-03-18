@@ -4,9 +4,8 @@
 #define TAILLE_CASE 20
 #define HAUTEUR 22
 #define LARGEUR 10
-#define VIDE                                                                   \
-  8 /* n'importe quelle valeur qui n'est pas un indice du tableau des couleurs \
-     */
+#define VIDE 8
+// n'importe quelle valeur qui n'est pas un indice du tableau des couleurs
 
 /*-------------   INSERER ICI LES DEFINITIONS DE TYPES   --------------*/
 
@@ -67,7 +66,7 @@ void afficher_toutes_pieces(char* color[], struct une_case tab_pieces[7][4]) {
 
 /*---------------------------------------------------------------------*/
 
-int main(void) {
+int main(int argc, char* argv[]) {
   /*---------------------   les declarations   ---------------------*/
 
   int indice; /* l'indice (type) de la piece jouee */
@@ -87,7 +86,7 @@ int main(void) {
 
   /* (a completer) */
 
-  /*----------------------  ouverture de la fenêtre graphique -------*/
+  /*----------------------  ouverture de la fenÃªtre graphique -------*/
 
   CINI_open_window(LARGEUR * TAILLE_CASE, HAUTEUR * TAILLE_CASE, "black");
 
@@ -98,7 +97,7 @@ int main(void) {
   /*----------------------  la boucle de jeu  ----------------------*/
 
   do {
-    /* afficher_plateau( );*/
+    afficher_plateau();
     indice = rand() % 7;
     /* initialiser( ); */
     /* afficher_piece( ); */
