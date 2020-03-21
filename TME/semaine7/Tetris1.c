@@ -1,5 +1,7 @@
 #include <SDL/SDL.h>
 #include <cini.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define TAILLE_CASE 20
 #define HAUTEUR 22
@@ -33,6 +35,7 @@ void supprimer_lignes(int[][]);
 void save(int[][], struct piece *);
 void hard_drop(int[][], struct piece *);
 int filled(int[][], struct piece *);
+int game_over(int[][], struct piece *);
 /*---------------------------------------------------------------------*/
 
 int main(int argc, char *argv[]) {
@@ -75,6 +78,9 @@ int main(int argc, char *argv[]) {
     afficher_plateau(plateau_jeu, color);
     indice = rand() % 7;
     initialiser(&tetromino_moving, tab_pieces[indice], indice);
+    if (game_over(plateau_jeu, &tetromino_moving)) {
+      break;
+    }
     afficher_piece(tetromino_moving, color[indice]);
 
     do {
@@ -115,7 +121,6 @@ int main(int argc, char *argv[]) {
     supprimer_lignes(plateau_jeu);
 
   } while (touche != SDLK_ESCAPE);
-
   return 0;
 }
 
@@ -310,6 +315,17 @@ int filled(int plateau[LARGEUR][HAUTEUR], struct piece *tetromino) {
     if (plateau[i_colonne][i_ligne] != VIDE) {
       return 1;
     }
+  }
+  return 0;
+}
+
+int game_over(int plateau[LARGEUR][HAUTEUR], struct piece *tetromino) {
+  if (filled(plateau, tetromino)) {
+    CINI_fill_window("black");
+    CINI_draw_string(10, (HAUTEUR / 2) * TAILLE_CASE - 10, "white",
+                     "GAME OVER");
+    CINI_loop_until_keyup();
+    return 1;
   }
   return 0;
 }
