@@ -11,9 +11,10 @@
 .vscode
 .theia
 
-# Ignore exe dll
+# Ignore exe dll font
 *.exe
 *.dll
+*.ttf
 
 # Ignore TabNine configuration
 /TabNine
