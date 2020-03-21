@@ -32,6 +32,7 @@ int rotation_droite(int[][], struct piece *);
 void supprimer_lignes(int[][]);
 void save(int[][], struct piece *);
 void hard_drop(int[][], struct piece *);
+int filled(int[][], struct piece *);
 /*---------------------------------------------------------------------*/
 
 int main(int argc, char *argv[]) {
@@ -196,7 +197,7 @@ int decaler_gauche(int plateau[LARGEUR][HAUTEUR], struct piece *tetromino) {
   tetromino->pos_colonne--;
   for (i = 0; i < 4; i++) {
     colonne_n = tetromino->pos_colonne + tetromino->la_piece[i].colonne;
-    if (colonne_n < 0) {
+    if (colonne_n < 0 || filled(plateau, tetromino)) {
       tetromino->pos_colonne++;
       return 0;
     }
@@ -210,7 +211,7 @@ int decaler_droite(int plateau[LARGEUR][HAUTEUR], struct piece *tetromino) {
   tetromino->pos_colonne++;
   for (i = 0; i < 4; i++) {
     colonne_n = tetromino->pos_colonne + tetromino->la_piece[i].colonne;
-    if (colonne_n >= LARGEUR) {
+    if (colonne_n >= LARGEUR || filled(plateau, tetromino)) {
       tetromino->pos_colonne--;
       return 0;
     }
@@ -298,4 +299,17 @@ void hard_drop(int plateau[LARGEUR][HAUTEUR], struct piece *tetromino) {
     ;
   }
   save(plateau, tetromino);
+}
+
+int filled(int plateau[LARGEUR][HAUTEUR], struct piece *tetromino) {
+  int i;
+  int i_ligne, i_colonne;
+  for (i = 0; i < 4; i++) {
+    i_ligne = tetromino->pos_ligne + tetromino->la_piece[i].ligne;
+    i_colonne = tetromino->pos_colonne + tetromino->la_piece[i].colonne;
+    if (plateau[i_colonne][i_ligne] != VIDE) {
+      return 1;
+    }
+  }
+  return 0;
 }
