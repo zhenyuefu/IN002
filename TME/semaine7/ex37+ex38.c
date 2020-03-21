@@ -177,6 +177,7 @@ void supprimer_lignes(int plateau[HAUTEUR][LARGEUR]) {
             }
         }
         if (b) {
+            i++;
             for (b = i; b >= 0; b--) {
                 for (j = 0; j < LARGEUR; j++) {
                     plateau[b][j] = plateau[b - 1][j];
@@ -238,7 +239,8 @@ int main(int argc, char *argv[]) {
     do {
         /* afficher_plateau( );*/
         afficher_plateau(plateau, color);
-        indice = rand() % 7;
+        indice = 1;
+        // indice = rand() % 7;
         /* initialiser( ); */
         initialiser(&temp, tab_pieces[indice], indice);
         /* afficher_piece( ); */
