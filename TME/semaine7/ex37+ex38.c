@@ -239,8 +239,8 @@ int main(int argc, char *argv[]) {
     do {
         /* afficher_plateau( );*/
         afficher_plateau(plateau, color);
-        indice = 1;
-        // indice = rand() % 7;
+        // indice = 1;
+        indice = rand() % 7;
         /* initialiser( ); */
         initialiser(&temp, tab_pieces[indice], indice);
         /* afficher_piece( ); */
