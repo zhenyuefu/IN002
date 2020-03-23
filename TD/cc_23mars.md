@@ -96,7 +96,7 @@ int main() {
   return 0;
 }
 ```
-![](pile.png)
+![pile.png](https://raw.githubusercontent.com/zhenyuefu/picbed/master/image/pile.png)
 ### Alternatives
 #### Question 3
 ```c
